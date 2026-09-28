@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: telegram-binding-bot
+    runtime: node
+    plan: free
+
+    buildCommand: npm install
+    startCommand: npm start
+
+    healthCheckPath: /health
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: BOT_TOKEN
+        sync: false
+
+      - key: BOT_USERNAME
+        value: HrryBindBot
+
+      - key: DATABASE_URL
+        sync: false
+
+      - key: PUBLIC_BASE_URL
+        sync: false
+
+      - key: TOKEN_TTL_SECONDS
+        value: "600"
